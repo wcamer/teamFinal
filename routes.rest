@@ -1,0 +1,48 @@
+#POST Vehicle
+{
+  "make": "I have been created",
+  "model": "Now update me ",
+  "color": "I need to be updated",
+  "trim": "please and thank you",
+  "year": 2001,
+  "mileage": 10000,
+  "price": 100
+}
+
+#Put Vehicle
+
+{
+  "make": "I am updated",
+  "model": "Now delete me",
+  "color": "Please",
+  "trim": "And thank you",
+  "year": 1801,
+  "mileage": 111,
+  "price": 100000
+}
+
+
+#POST Employee
+{
+  "firstName": "I was just created",
+  "lastName": "now update me",
+  "birthday": "2000-12-10",
+  "phone": "111-111-1111",
+  "email": "any@email.com",
+  "startDate": "2000-07-30",
+  "username": "updateMeNext"
+}
+
+#PUT Employee
+{
+  "firstName": "I should be updated",
+  "lastName": "now delete me",
+  "birthday": "2000-12-10",
+  "phone": "111-111-1111",
+  "email": "any@email.com",
+  "startDate": "2000-07-30",
+  "username": "deleteMeNext"
+}
+
+
+
