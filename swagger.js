@@ -1,4 +1,5 @@
-const swaggerAutoGen = require('swagger-autogen')
+const swaggerAutoGen = require('swagger-autogen')();
+
 const doc = {
     info: {
         title: "Car Dealership App",
@@ -7,11 +8,12 @@ const doc = {
     // host:'finalProject.onrender.com',
     // schemes:['https']
     host: ['localhost:5500'],
-    schemes: ['http','https']
+    schemes: ['http']
     
 }
 
 const outputFile = './swagger-output.json'
 const routes = ['./routes/index']
 
+// generate swagger.json
 swaggerAutoGen(outputFile,routes,doc)

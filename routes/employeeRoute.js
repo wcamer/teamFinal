@@ -6,8 +6,6 @@ router.get('/', employeeCon.getAll)
 router.get('/:id', val.getEmployeeRules(), val.getEmployeeCheck, employeeCon.getOne)
 router.post('/', employeeCon.addEmployee)
 router.put('/:id', employeeCon.updateEmployee)
-// router.delete('/:id', employeeCon.deleteEmployee)
+router.delete('/:id', employeeCon.deleteEmployee)
 
-
-
-module.exports = router
+module.exports = router;

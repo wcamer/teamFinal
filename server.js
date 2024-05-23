@@ -29,8 +29,7 @@ app.use(cors({ methods: ['GET', 'POST','PUT','DELETE']}))
 app.use(cors({origin: '*'}))
 
 
-
-app.use('/' , require('./routes'))
+app.use('/' , require('./routes/index'))
 
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),
@@ -39,6 +38,14 @@ app.get('/github/callback', passport.authenticate('github', {
         res.redirect('/')
 
     })
+
+// see errors on terminal
+process.on("uncaughtException", (err, origin) => {
+  console.log(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+  );
+});
 
 mongodb.init((err) =>{
     if(err) {
