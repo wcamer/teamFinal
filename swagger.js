@@ -5,10 +5,10 @@ const doc = {
         title: "Car Dealership App",
         description: "This is the api for Car Dealership App"
     },
-    // host:'finalProject.onrender.com',
-    // schemes:['https']
-    host: ['localhost:5500'],
-    schemes: ['http']
+    host:'finalProject.onrender.com',
+    schemes:['https']
+    // host: ['localhost:5500'],
+    // schemes: ['http']
     
 }
 
