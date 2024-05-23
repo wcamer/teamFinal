@@ -26,7 +26,7 @@ val.getCustomerRules = () => {
         .withMessage("Please enter a valid customer id")
         .custom(
              async (_id, {req}) => {
-            _id = new mongoDbObjectId(req.params.id)
+            _id = new mDID(req.params.id)
             const customer = await mongodb.getDB().db().collection('customers').findOne({_id: _id})
             if(!customer) {
                 throw new Error("customer ID isn't Valid!!!" )
