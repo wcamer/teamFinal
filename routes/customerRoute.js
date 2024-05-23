@@ -4,8 +4,8 @@ const val = require('../utilities/customerValidation')
 
 router.get('/', customerCon.getAll)
 router.get('/:id', val.getCustomerRules(), val.getCustomerCheck, customerCon.getOne)
-// router.post('/', customerCon.createcustomer)
-// router.put('/:id', customerCon.updatecustomer)
+router.post('/', customerCon.addCustomer)
+router.put('/:id', customerCon.updateCustomer)
 // router.delete('/:id', customerCon.deletecustomer)
 
 

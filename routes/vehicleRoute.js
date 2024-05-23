@@ -4,8 +4,8 @@ const val = require('../utilities/vehicleValidation')
 
 router.get('/', vehicleCon.getAll)
 router.get('/:id', val.getVehicleRules(), val.getVehicleCheck, vehicleCon.getOne)
-// router.post('/', vehicleCon.createVehicle)
-// router.put('/:id', vehicleCon.updateVehicle)
+router.post('/', vehicleCon.addVehicle)
+router.put('/:id', vehicleCon.updateVehicle)
 // router.delete('/:id', vehicleCon.deleteVehicle)
 
 

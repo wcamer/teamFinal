@@ -4,8 +4,8 @@ const val = require('../utilities/dealershipValidation')
 
 router.get('/', dealershipCon.getAll)
 router.get('/:id', val.getDealershipRules(), val.getDealershipCheck, dealershipCon.getOne)
-// router.post('/', dealershipCon.createdealership)
-// router.put('/:id', dealershipCon.updatedealership)
+router.post('/', dealershipCon.addDealership)
+router.put('/:id', dealershipCon.updateDealership)
 // router.delete('/:id', dealershipCon.deletedealership)
 
 
