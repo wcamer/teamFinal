@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const vehicleCon = require('../controllers/vehicleController')
 const val = require('../utilities/vehicleValidation')
+const checker = require('../utilities/auth')
 
 // getAll Vehicle
 router.get('/', vehicleCon.getAll)
@@ -9,7 +10,7 @@ router.get('/', vehicleCon.getAll)
 router.get('/:id', val.getVehicleRules(), val.getVehicleCheck, vehicleCon.getOne)
 
 // post/add vehicle
-router.post('/', vehicleCon.addVehicle)
+router.post('/', checker.userCheck, checker.authCheck, vehicleCon.addVehicle)
 
 // put/update vehicle
 router.put('/:id', vehicleCon.updateVehicle)
