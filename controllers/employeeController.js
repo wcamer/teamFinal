@@ -4,7 +4,7 @@ const mDID = require('mongodb').ObjectId
 // Get All Employees
 const getAll = async (req, res) =>{
   // #swagger.tags["CUSTOMERS"];
-  const result = await mDB.getDB().db().collection("employees").find();
+  const result = await mDB.getDB().db().collection('employees').find();
   result.toArray().then((employees) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(employees);
@@ -19,7 +19,7 @@ const getOne = async (req, res) =>{
       const result = await mDB
         .getDB()
         .db()
-        .collection("employees")
+        .collection('employees')
         .find({ _id: employeeId });
       try {
         result.toArray().then((employees) => {
@@ -82,11 +82,11 @@ const deleteEmployee = async (req, res) => {
         /*
         #swagger.tags["EMPLOYEE"];
         */
-        const employeeId = new ObjectId(req.params.id);
+        const employeeId = new mDID(req.params.id);
         const response = await mDB
             .getDB()
             .db()
-            .collection("employees")
+            .collection('employees')
             .deleteOne({ _id: employeeId });
         
         if (response.deletedCount > 0) {
