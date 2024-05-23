@@ -28,4 +28,4 @@ router.use('/logout', (req,res,next) =>{
     })
 })
 
-module.exports = router
+module.exports = router;
