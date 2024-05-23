@@ -26,7 +26,7 @@ val.getDealershipRules = () => {
         .withMessage("Please enter a valid dealership id")
         .custom(
              async (_id, {req}) => {
-            _id = new mongoDbObjectId(req.params.id)
+            _id = new mDID(req.params.id)
             const dealership = await mongodb.getDB().db().collection('dealerships').findOne({_id: _id})
             if(!dealership) {
                 throw new Error("dealership ID isn't Valid!!!" )
