@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
   /*
   #swagger.tags["Cars"];
   */
-    const result = await mDB.getDB().db().collection("vehicles").find();
+    const result = await mDB.getDB().db().collection('vehicles').find();
     result.toArray().then((vehicles) => {
         res.setHeader("Content-Type", "application/json");
         res.json(vehicles);
@@ -21,7 +21,7 @@ const getOne = async (req, res) => {
         const result = await mDB
             .getDB()
             .db()
-            .collection("vehicles")
+            .collection('vehicles')
             .find({ _id: carId });
         try {
             result.toArray().then((vehicles) => {
@@ -53,7 +53,7 @@ const addVehicle = async (req, res) => {
   const response = await mDB
     .getDB()
     .db()
-    .collection("vehicles")
+    .collection('vehicles')
     .insertOne(vehicle);
   if (response.acknowledged) {
     res.status(204).json(response);
@@ -93,11 +93,11 @@ const deleteVehicle = async (req, res) => {
         /*
         #swagger.tags["Vehicle"];
         */
-        const vehicleId = new ObjectId(req.params.id);
+        const vehicleId = new mDID(req.params.id);
         const response = await mDB
           .getDB()
           .db()
-          .collection("vehicles")
+          .collection('vehicles')
           .deleteOne({ _id: vehicleId });
         
         if (response.deletedCount > 0) {

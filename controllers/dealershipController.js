@@ -82,7 +82,7 @@ const deleteDealership = async (req, res) => {
         const response = await mDB
             .getDB()
             .db()
-            .collection('vehicles')
+            .collection('dealerships')
             .deleteOne({ _id: dealershipId });
         
         if (response.deletedCount > 0) {

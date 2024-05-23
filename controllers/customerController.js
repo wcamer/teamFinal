@@ -19,7 +19,7 @@ const getOne = async (req, res) => {
         const result = await mDB
             .getDB()
             .db()
-            .collection("customers")
+            .collection('customers')
             .find({ _id: customerId });
         try {
             result.toArray().then((customers) => {
@@ -85,7 +85,7 @@ const deleteCustomer = async (req, res) => {
         const response = await mDB
             .getDB()
             .db()
-            .collection("customers")
+            .collection('customers')
             .deleteOne({ _id: customerId });
         
         if (response.deletedCount > 0) {
