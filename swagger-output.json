@@ -10,20 +10,9 @@
   ],
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/": {
       "get": {
         "description": "",
@@ -37,7 +26,7 @@
     "/vehicles/": {
       "get": {
         "tags": ["VEHICLES"],
-        "description": "Get All Vehicles",
+        "description": "Get all vehicles",
         "produces": [
           "application/json"
         ],
@@ -49,7 +38,7 @@
       },
       "post": {
         "tags": ["VEHICLES"],
-        "description": "Add New Vehicle",
+        "description": "Add/Create New Vehicle",
         "parameters": [
           {
             "name": "body",
@@ -97,8 +86,8 @@
     },
     "/vehicles/{id}": {
       "get": {
-        "tags": ["VEHICLES"],
-        "description": "Get Single Vehicle Details by ID",
+        "tags":["VEHICLES"],
+        "description": "Get a Single Vehicle by ID",
         "produces": [
           "application/json"
         ],
@@ -121,7 +110,7 @@
       },
       "put": {
         "tags": ["VEHICLES"],
-        "description": "Update Vehicle Details by ID",
+        "description": "Update existing vehicle by ID",
         "parameters": [
           {
             "name": "id",
@@ -174,7 +163,7 @@
       },
       "delete": {
         "tags": ["VEHICLES"],
-        "description": "Delete a vehicle by ID.",
+        "description": "Delete Vehicle by ID",
         "parameters": [
           {
             "name": "id",
@@ -198,8 +187,8 @@
     },
     "/dealerships/": {
       "get": {
-        "tags": ["DEALERS"],
-        "description": "Get All Dealers",
+        "tags": ["DEALERSHIPS"],
+        "description": "Get All Dealerships",
         "produces": [
           "application/json"
         ],
@@ -210,7 +199,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Add/Create New Dealership",
         "parameters": [
           {
             "name": "body",
@@ -246,8 +236,8 @@
     },
     "/dealerships/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Get Single Dealership Details by ID",
         "produces": [
           "application/json"
         ],
@@ -269,7 +259,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Update Dealership by ID",
         "parameters": [
           {
             "name": "id",
@@ -312,8 +303,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Delete Dealership by ID",
         "parameters": [
           {
             "name": "id",
@@ -337,8 +328,8 @@
     },
     "/employees/": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Get All Employees",
         "produces": [
           "application/json"
         ],
@@ -349,7 +340,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Add/Create New Employee",
         "parameters": [
           {
             "name": "body",
@@ -394,8 +386,8 @@
     },
     "/employees/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Get Single Employee Details by ID",
         "produces": [
           "application/json"
         ],
@@ -417,7 +409,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Update Employee By ID",
         "parameters": [
           {
             "name": "id",
@@ -467,12 +460,35 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "tags": ["EMPLOYEES"],
+        "description": "Delete Employee By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/customers/": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Get All Customers",
         "produces": [
           "application/json"
         ],
@@ -483,7 +499,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Add/Create New Customer",
         "parameters": [
           {
             "name": "body",
@@ -525,8 +542,8 @@
     },
     "/customers/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Get Single Customer Details by ID",
         "produces": [
           "application/json"
         ],
@@ -548,7 +565,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Update Customer Details by ID",
         "parameters": [
           {
             "name": "id",
@@ -597,8 +615,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Delete Customer by ID",
         "parameters": [
           {
             "name": "id",

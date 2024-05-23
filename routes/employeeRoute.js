@@ -9,6 +9,4 @@ router.post('/', checker.userCheck, checker.authCheck, employeeCon.addEmployee)
 router.put('/:id',checker.userCheck, checker.authCheck, employeeCon.updateEmployee)
 router.delete('/:id', checker.userCheck, checker.authCheck, employeeCon.deleteEmployee)
 
-
-
-module.exports = router
+module.exports = router;
