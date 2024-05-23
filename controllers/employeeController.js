@@ -1,17 +1,39 @@
 const mDB = require('../database/db')
 const mDID = require('mongodb').ObjectId
 
+// Get All Employees
 const getAll = async (req, res) =>{
-    const cars = await mDB.getDB().db().collection('employees').find().toArray()
-    res.setHeader('Content-Type', 'application/json')
-    res.json(cars)
+  // #swagger.tags["CUSTOMERS"];
+  const result = await mDB.getDB().db().collection("employees").find();
+  result.toArray().then((employees) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(employees);
+  });
 }
 
+// Get single employee by ID
 const getOne = async (req, res) =>{
-    const id = new mDID(req.params.id)
-    const cars = await mDB.getDB().db().collection('employees').find({_id: id}).toArray()
-    res.setHeader('Content-Type', 'application/json')
-    res.json(cars)
+    if (mDID.isValid(req.params.id)) {
+      // #swagger.tags["EMPLOYEE"];
+      const employeeId = new mDID(req.params.id);
+      const result = await mDB
+        .getDB()
+        .db()
+        .collection("employees")
+        .find({ _id: employeeId });
+      try {
+        result.toArray().then((employees) => {
+          res.setHeader("Content-Type", "application/json");
+          res.status(200).json(employees[0]);
+        });
+      } catch (err) {
+        res.status(400).json({ message: err });
+      }
+    } else {
+      res
+        .status(400)
+        .json("Must use a valid employee id to find the employee's details.");
+    }
 }
 
 const addEmployee = async (req, res) => {
@@ -54,4 +76,35 @@ const updateEmployee = async (req, res) => {
     }
 };
 
-module.exports = {getAll, getOne, addEmployee, updateEmployee}
+// Delete Single Employee by ID
+const deleteEmployee = async (req, res) => {
+    if (mDID.isValid(req.params.id)) {
+        /*
+        #swagger.tags["EMPLOYEE"];
+        */
+        const employeeId = new ObjectId(req.params.id);
+        const response = await mDB
+            .getDB()
+            .db()
+            .collection("employees")
+            .deleteOne({ _id: employeeId });
+        
+        if (response.deletedCount > 0) {
+            res.status(204).json(response);
+        } else {
+            res.status(500).json(
+                response.error || "Some error occurred while removing the employee details."
+            );
+        }
+    } else {
+        res.status(400).json("Must use a valid employee id to delete the employee.")
+    };
+};
+
+module.exports = {
+    getAll,
+    getOne,
+    addEmployee,
+    updateEmployee,
+    deleteEmployee
+}

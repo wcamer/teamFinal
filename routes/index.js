@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const swaggerUI = require('swagger-ui-express')
 const swaggerDoc = require('../swagger-output.json')
+const passport = require("passport")
 
 router.use('/api-docs', swaggerUI.serve)
 router.get('/api-docs', swaggerUI.setup(swaggerDoc))
@@ -27,4 +28,4 @@ router.use('/logout', (req,res,next) =>{
     })
 })
 
-module.exports = router
+module.exports = router;
