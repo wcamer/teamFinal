@@ -23,20 +23,10 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/vehicles/": {
       "get": {
         "tags": ["VEHICLES"],
-        "description": "Get",
+        "description": "Get all vehicles",
         "produces": [
           "application/json"
         ],
@@ -47,8 +37,8 @@
         }
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": ["VEHICLES"],
+        "description": "Add/Create New Vehicle",
         "parameters": [
           {
             "name": "body",
@@ -93,7 +83,8 @@
     },
     "/vehicles/{id}": {
       "get": {
-        "description": "",
+        "tags":["VEHICLES"],
+        "description": "Get a Single Vehicle by ID",
         "produces": [
           "application/json"
         ],
@@ -115,7 +106,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["VEHICLES"],
+        "description": "Update existing vehicle by ID",
         "parameters": [
           {
             "name": "id",
@@ -167,8 +159,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["VEHICLES"],
+        "description": "Delete Vehicle by ID",
         "parameters": [
           {
             "name": "id",
@@ -192,8 +184,8 @@
     },
     "/dealerships/": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Get All Dealerships",
         "produces": [
           "application/json"
         ],
@@ -204,7 +196,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Add/Create New Dealership",
         "parameters": [
           {
             "name": "body",
@@ -240,8 +233,8 @@
     },
     "/dealerships/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Get Single Dealership Details by ID",
         "produces": [
           "application/json"
         ],
@@ -263,7 +256,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Update Dealership by ID",
         "parameters": [
           {
             "name": "id",
@@ -306,8 +300,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["DEALERSHIPS"],
+        "description": "Delete Dealership by ID",
         "parameters": [
           {
             "name": "id",
@@ -331,8 +325,8 @@
     },
     "/employees/": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Get All Employees",
         "produces": [
           "application/json"
         ],
@@ -343,7 +337,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Add/Create New Employee",
         "parameters": [
           {
             "name": "body",
@@ -388,8 +383,8 @@
     },
     "/employees/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Get Single Employee Details by ID",
         "produces": [
           "application/json"
         ],
@@ -411,7 +406,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Update Employee By ID",
         "parameters": [
           {
             "name": "id",
@@ -463,8 +459,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["EMPLOYEES"],
+        "description": "Delete Employee By ID",
         "parameters": [
           {
             "name": "id",
@@ -488,8 +484,8 @@
     },
     "/customers/": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Get All Customers",
         "produces": [
           "application/json"
         ],
@@ -500,7 +496,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Add/Create New Customer",
         "parameters": [
           {
             "name": "body",
@@ -542,8 +539,8 @@
     },
     "/customers/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Get Single Customer Details by ID",
         "produces": [
           "application/json"
         ],
@@ -565,7 +562,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Update Customer Details by ID",
         "parameters": [
           {
             "name": "id",
@@ -614,8 +612,8 @@
         }
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": ["CUSTOMERS"],
+        "description": "Delete Customer by ID",
         "parameters": [
           {
             "name": "id",
