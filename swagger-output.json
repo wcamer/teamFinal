@@ -5,7 +5,7 @@
     "description": "This is the api for Car Dealership App",
     "version": "1.0.0"
   },
-  "host": "finalProject.onrender.com",
+  "host": "cse341-team4-final.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
