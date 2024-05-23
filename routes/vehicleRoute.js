@@ -13,9 +13,9 @@ router.get('/:id', val.getVehicleRules(), val.getVehicleCheck, vehicleCon.getOne
 router.post('/', checker.userCheck, checker.authCheck, vehicleCon.addVehicle)
 
 // put/update vehicle
-router.put('/:id', vehicleCon.updateVehicle)
+router.put('/:id', checker.userCheck, checker.authCheck, vehicleCon.updateVehicle)
 
 // delete vehicle
-router.delete('/:id', vehicleCon.deleteVehicle)
+router.delete('/:id', checker.userCheck, checker.authCheck, vehicleCon.deleteVehicle)
 
 module.exports = router;

@@ -11,11 +11,17 @@ const port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 
-app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUnintialized: true,
+// app.use(session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUnintialized: true,
        
+// }))
+
+app.use(session({
+    secret: process.env.SECRET, //should be a random number
+    resave: false, 
+    saveUninitialized: true,
 }))
 
 app.use(passport.initialize())
