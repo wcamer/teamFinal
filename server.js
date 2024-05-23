@@ -4,7 +4,7 @@ const mongodb = require('./database/db')
 const bodyParser = require('body-parser')
 const passport = require('./utilities/passport-setup')
 const session = require('express-session')
-
+const cors = require('cors')
 
 const port = process.env.PORT || 3000 
 
@@ -14,7 +14,8 @@ app.use(bodyParser.json())
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUnitialized: true,
+    saveUnintialized: true,
+       
 }))
 
 app.use(passport.initialize())
@@ -23,6 +24,9 @@ app.use(passport.initialize())
     res.setHeader('Access-Control-Allow0Methods', 'GET, POST, PUT, DELETE')
 next()
 })
+
+app.use(cors({ methods: ['GET', 'POST','PUT','DELETE']}))
+app.use(cors({origin: '*'}))
 
 
 
