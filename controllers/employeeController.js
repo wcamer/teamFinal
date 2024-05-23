@@ -82,7 +82,7 @@ const deleteEmployee = async (req, res) => {
         /*
         #swagger.tags["EMPLOYEE"];
         */
-        const employeeId = new ObjectId(req.params.id);
+        const employeeId = new mDID(req.params.id);
         const response = await mDB
             .getDB()
             .db()
