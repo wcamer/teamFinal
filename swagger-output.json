@@ -10,20 +10,9 @@
   ],
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/": {
       "get": {
         "description": "",
@@ -34,10 +23,20 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/vehicles/": {
       "get": {
         "tags": ["VEHICLES"],
-        "description": "Get All Vehicles",
+        "description": "Get",
         "produces": [
           "application/json"
         ],
@@ -48,8 +47,8 @@
         }
       },
       "post": {
-        "tags": ["VEHICLES"],
-        "description": "Add New Vehicle",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -94,8 +93,7 @@
     },
     "/vehicles/{id}": {
       "get": {
-        "tags": ["VEHICLES"],
-        "description": "Get Single Vehicle Details by ID",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -117,8 +115,7 @@
         }
       },
       "put": {
-        "tags": ["VEHICLES"],
-        "description": "Update Vehicle Details by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -170,8 +167,8 @@
         }
       },
       "delete": {
-        "tags": ["VEHICLES"],
-        "description": "Delete a vehicle by ID.",
+        "tags": [],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -195,8 +192,8 @@
     },
     "/dealerships/": {
       "get": {
-        "tags": ["DEALERS"],
-        "description": "Get All Dealers",
+        "tags": [],
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -243,6 +240,7 @@
     },
     "/dealerships/{id}": {
       "get": {
+        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -306,10 +304,34 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/employees/": {
       "get": {
+        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -366,6 +388,7 @@
     },
     "/employees/{id}": {
       "get": {
+        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -438,10 +461,34 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/customers/": {
       "get": {
+        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -495,6 +542,7 @@
     },
     "/customers/{id}": {
       "get": {
+        "tags": [],
         "description": "",
         "produces": [
           "application/json"
@@ -551,6 +599,29 @@
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
