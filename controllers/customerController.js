@@ -54,6 +54,7 @@ const addCustomer = async (req, res) => {
 
 // update/put existing customer's details by ID
 const updateCustomer = async (req, res) => {
+    // #swagger.tags["CUSTOMERS"];
     if (!mDID.isValid(req.params.id)) {
         res.status(400).json('Must use a valid id to update a customer.');
     }
@@ -78,13 +79,13 @@ const updateCustomer = async (req, res) => {
 const deleteCustomer = async (req, res) => {
     if (mDID.isValid(req.params.id)) {
         /*
-        #swagger.tags["Vehicle"];
+        #swagger.tags["CUSTOMERS"];
         */
-        const customerID = new ObjectId(req.params.id);
+        const customerId = new ObjectId(req.params.id);
         const response = await mDB
             .getDB()
             .db()
-            .collection("vehicles")
+            .collection("customers")
             .deleteOne({ _id: customerId });
         
         if (response.deletedCount > 0) {
