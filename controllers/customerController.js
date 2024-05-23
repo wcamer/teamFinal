@@ -80,7 +80,7 @@ const deleteCustomer = async (req, res) => {
         /*
         #swagger.tags["Vehicle"];
         */
-        const customerID = new ObjectId(req.params.id);
+        const customerId = new ObjectId(req.params.id);
         const response = await mDB
             .getDB()
             .db()

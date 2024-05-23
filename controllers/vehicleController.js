@@ -93,7 +93,7 @@ const deleteVehicle = async (req, res) => {
         /*
         #swagger.tags["Vehicle"];
         */
-        const vehicleID = new mDID(req.params.id);
+        const vehicleId = new mDID(req.params.id);
         const response = await mDB
           .getDB()
           .db()
