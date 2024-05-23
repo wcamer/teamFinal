@@ -14,7 +14,7 @@ const getAll = async (req, res) => {
     })
 }
 
-// Get Single Laptop by ID
+// Get Single vehicle by ID
 const getOne = async (req, res) => {
     if (mDID.isValid(req.params.id)) {
         const carId = new mDID(req.params.id);
@@ -32,7 +32,7 @@ const getOne = async (req, res) => {
             res.status(400).json({ message: err })
         }
     } else {
-        res.status(400).json("Must use a valid laptop id to find the laptop.")
+        res.status(400).json("Must use a valid Vehicle id to find a vehicle.")
     }
 };
 
@@ -64,7 +64,7 @@ const addVehicle = async (req, res) => {
   }
 };
 
-// Update/PUT Existing Laptop by ID
+// Update/PUT Existing vehicle by ID
 const updateVehicle = async (req, res) => {
     if (!mDID.isValid(req.params.id)) {
         res.status(400).json('Must use a valid id to update a vehicle.');
@@ -93,7 +93,7 @@ const deleteVehicle = async (req, res) => {
         /*
         #swagger.tags["Vehicle"];
         */
-        const vehicleID = new ObjectId(req.params.id);
+        const vehicleId = new ObjectId(req.params.id);
         const response = await mDB
           .getDB()
           .db()
