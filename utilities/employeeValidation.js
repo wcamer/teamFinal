@@ -109,8 +109,8 @@ val.postEmployeeRules = () =>{
 }
 
 val.postEmployeeCheck = async(req, res, next) => {
-    const _id = req.params.id
-    req.body = {_id}
+  
+    const  {firstName, lastName, birthday, phone, email, startDate, username} = req.body
    let errors = []
    errors =  validationResult(req)
 
@@ -180,7 +180,7 @@ val.putEmployeeRules = () =>{
 
 val.putEmployeeCheck = async(req, res, next) => {
     const _id = req.params.id
-    req.body = {_id}
+    const {firstName, lastName, birthday, phone, email, startDate, username} = req.body
    let errors = []
    errors =  validationResult(req)
 
