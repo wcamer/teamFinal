@@ -99,6 +99,25 @@ val.postCustomerRules = () => {
   ];
 };
 
+
+val.postCustomerCheck = async (req, res, next) => {
+  const { firstName, lastName, birthday, phone, email, username } =
+    req.body;
+  let errors = [];
+  errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.log("Rule violation in postCustomerCheck!!!  Operation canceled");
+    res.status(400).json({ Message: errors });
+    return;
+  } else {
+    console.log(
+      "It passed the postCustomerCheck and associated rules.  Proceeding with creation operation"
+    );
+  }
+  next();
+};
+
 val.putCustomerRules = () => {
   return [
     body("firstName")
@@ -182,6 +201,24 @@ val.deleteCustomerRules = () => {
         }
       }),
   ];
+};
+
+val.deleteCustomerCheck = async (req, res, next) => {
+  const _id = req.params.id;
+  req.body = { _id };
+  let errors = [];
+  errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.log("Rule violation in deleteCustomerCheck!!!  Operation canceled");
+    res.status(400).json({ Message: errors });
+    return;
+  } else {
+    console.log(
+      "It passed the deleteCustomerCheck and associated rules.  Proceeding with deletion operation"
+    );
+  }
+  next();
 };
 
 module.exports = val
