@@ -52,5 +52,109 @@ val.getDealershipCheck = async (req, res, next) =>{
     next()
 }
 
+val.postDealershipRules = () => {
+    return [
+      body("name")
+        .trim()
+        .notEmpty()
+        .isLength({ min: 1 })
+        .withMessage("Please provide a name with at least 1 letter"),
+  
+      body("address")
+        .trim()
+        .notEmpty()
+        .isLength({ min: 1 })
+        .withMessage("Please provide an address with at least 1 letter"),
+  
+      body("state")
+        .trim()
+        .notEmpty()
+        .matches(/^AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|NE$/)
+  
+        .withMessage(
+          "Please provide the U.S. state abbreviation in all caps (Ex: VA, AZ, UT)"
+        ),
+  
+      body("zip")
+        .trim()
+        .isLength({ min: 5 })
+        .matches(/^\d$/)
+        .withMessage(
+          "Please enter a valid zip code with at least 5 digits"
+        )
+    ];
+  };
+  
+  val.putDealershipRules = () => {
+    return [
+        body("name")
+        .trim()
+        .notEmpty()
+        .isLength({ min: 1 })
+        .withMessage("Please provide a name with at least 1 letter"),
+  
+      body("address")
+        .trim()
+        .notEmpty()
+        .isLength({ min: 1 })
+        .withMessage("Please provide an address with at least 1 letter"),
+  
+      body("state")
+        .trim()
+        .notEmpty()
+        .matches(/^AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|NE$/)
+  
+        .withMessage(
+          "Please provide the U.S. state abbreviation in all caps (Ex: VA, AZ, UT)"
+        ),
+  
+      body("zip")
+        .trim()
+        .isLength({ min: 5 })
+        .matches(/^\d$/)
+        .withMessage(
+          "Please enter a valid zip code with at least 5 digits"
+        )
+    ];
+  };
+  
+  val.putDealershipCheck = async (req, res, next) => {
+    const _id = req.params.id;
+    const { name, address, state, zip } = req.body;
+    let errors = [];
+    errors = validationResult(req);
+  
+    if (!errors.isEmpty()) {
+      console.log("Rule violation in putDealershipCheck!!! Operation cancelled");
+      res.status(400).json({ Message: errors });
+      return;
+    } else {
+      console.log(
+        "It passed the putDealershipCheck and associated rules. Proceeding with update operation."
+      );
+    }
+    next();
+  };
+  
+  val.deleteDealershipRules = () => {
+    return [
+      body("_id")
+        .trim()
+        .isLength({ min: 0, max: 24 })
+        .withMessage("Please enter a valid dealership id")
+        .custom(async (_id, { req }) => {
+          _id = new mDID(req.params.id);
+          const dealership = await mongodb
+            .getDB()
+            .db()
+            .collection('dealerships')
+            .findOne({ _id: _id });
+          if (!dealership) {
+            throw new Error("dealership ID isn't Valid!!!");
+          }
+        }),
+    ];
+  };
+
 
 module.exports = val
