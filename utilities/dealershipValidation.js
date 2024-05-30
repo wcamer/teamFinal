@@ -15,7 +15,6 @@ const val = {}
 
 
 val.getDealershipRules = () => {
-    
 
     return [
 

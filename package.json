@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "default-test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "swagger": "node ./swagger.js"
+    "swagger": "node ./swagger.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -24,9 +25,5 @@
     "passport-github2": "^0.1.12",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.0"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "supertest": "^7.0.0"
   }
 }
