@@ -52,6 +52,7 @@ val.getDealershipCheck = async (req, res, next) =>{
     next()
 }
 
+
 val.postDealershipRules = () => {
     return [
       body("name")
@@ -84,8 +85,27 @@ val.postDealershipRules = () => {
         )
     ];
   };
+
+
+val.postDealershipCheck = async(req, res, next) => {
   
-  val.putDealershipRules = () => {
+    const  {name, address, state, zip} = req.body
+    let errors = []
+    errors =  validationResult(req)
+
+    if(!errors.isEmpty()){
+       console.log("Rule violation in postDealershipCheck!!!  Operation canceled")
+       res.status(400).json({Message: errors})
+       return
+    }
+    else{
+       console.log("It passed the postDealershipCheck and associated rules.  Proceeding with creation operation")
+    }
+    next()
+};
+  
+
+val.putDealershipRules = () => {
     return [
         body("name")
         .trim()
@@ -116,9 +136,10 @@ val.postDealershipRules = () => {
           "Please enter a valid zip code with at least 5 digits"
         )
     ];
-  };
+};
   
-  val.putDealershipCheck = async (req, res, next) => {
+
+val.putDealershipCheck = async (req, res, next) => {
     const _id = req.params.id;
     const { name, address, state, zip } = req.body;
     let errors = [];
@@ -134,9 +155,10 @@ val.postDealershipRules = () => {
       );
     }
     next();
-  };
-  
-  val.deleteDealershipRules = () => {
+};
+
+
+val.deleteDealershipRules = () => {
     return [
       body("_id")
         .trim()
@@ -154,7 +176,24 @@ val.postDealershipRules = () => {
           }
         }),
     ];
-  };
+};
+
+val.deleteDealershipCheck = async(req, res, next) => {
+    const _id = req.params.id
+    req.body = {_id}
+   let errors = []
+   errors =  validationResult(req)
+
+   if(!errors.isEmpty()){
+       console.log("Rule violation in deleteDealershipCheck!!!  Operation canceled")
+       res.status(400).json({Message: errors})
+       return
+   }
+   else{
+       console.log("It passed the deleteDealershipCheck and associated rules.  Proceeding with deletion operation")
+   }
+   next()
+};
 
 
-module.exports = val
+module.exports = val;

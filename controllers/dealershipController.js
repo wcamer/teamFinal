@@ -1,5 +1,6 @@
-const mDB = require('../database/db')
-const mDID = require('mongodb').ObjectId
+const { ObjectId } = require('mongodb');
+const mDB = require('../database/db');
+const mDID = require('mongodb').ObjectId;
 
 // Get All Dealerships
 const getAll = async (req, res) => {
@@ -20,7 +21,7 @@ const getOne = async (req, res) => {
             .getDB()
             .db()
             .collection('dealerships')
-            .find({ _id: customerId });
+            .find({ _id: dealershipId });
         try {
             result.toArray().then((dealerships) => {
                 res.setHeader("Content-Type", "application/json");
@@ -30,10 +31,8 @@ const getOne = async (req, res) => {
             res.status(400).json({ message: err });
         }
     } else {
-        res
-            .status(400)
-            .json("Must use a valid dealership id to find the dealer's details.");
-    };
+        res.status(400).json("Must use a valid dealership id to find the dealer's details.")
+    }
 };
 
 // Add/POST new delear details
@@ -44,9 +43,13 @@ const addDealership = async (req, res) => {
         state: req.body.state,
         zip: req.body.zip
     };
-    const response = await mDB.getDB().db().collection('dealerships').insertOne(dealership);
+    const response = await mDB
+        .getDB()
+        .db()
+        .collection('dealerships')
+        .insertOne(dealership);
     if (response.acknowledged) {
-        res.status(204).send();
+        res.status(204).json(response);
     } else {
         res.status(500).json(response.error || 'An error occurred while creating the dealership.')
     }
@@ -78,7 +81,7 @@ const deleteDealership = async (req, res) => {
         /*
         #swagger.tags["DEALER"];
         */
-        const dealershipId = new ObjectId(req.params.id);
+        const dealershipId = new mDID(req.params.id);
         const response = await mDB
             .getDB()
             .db()
