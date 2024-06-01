@@ -22,13 +22,14 @@ obj.authCheck = async (req, res, next) =>{
         adminList.push(admins[i].githubID)
     }
 
-    console.log("admins: ", admins,"\n user id: ",req.session.user.id ,"\n adminlist: ", adminList)
+    // console.log("admins: ", admins,"\n user id: ",req.session.user.id ,"\n adminlist: ", adminList)
     if(adminList.includes(req.session.user.id)){
         console.log("Authorization Confirmed!!!")
         next()
     }else{
         
         res.status(400).json("You don't have access for this action")
+        console.log("Access Denied!!!")
         return
     }
 
