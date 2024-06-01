@@ -68,6 +68,9 @@ describe('Good Home Routes', function () {
         // db = await connection.db('CarDealership').collection('customers').find().toArray()
         const res = await request(app).get('/dealerships')
         expect(res.statusCode).toBe(200)
+
+        const res2 = await request(app).get('/dealershipss')
+        expect(res2.statusCode).toBe(404)
        
     })
 }); 
