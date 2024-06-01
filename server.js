@@ -60,3 +60,5 @@ mongodb.init((err) =>{
         app.listen(port, () => {console.log("Database is connected and listening on port: ", port)})
     }
 })
+
+module.exports = app
