@@ -45,4 +45,22 @@
 }
 
 
+#POST customer body
+{
+  "firstName": "please update me",
+  "lastName": "I was just created",
+  "birthday": "2000-12-31",
+  "phone": "555-555-5555",
+  "email": "post@email.com",
+  "username": "created"
+}
 
+#PUT customer body
+{
+  "firstName": "DELETE ME PLEASE",
+  "lastName": "I was just updated",
+  "birthday": "2023-12-31",
+  "phone": "111-222-3333",
+  "email": "put@email.com",
+  "username": "about2bdeleted"
+}
