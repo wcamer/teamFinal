@@ -64,3 +64,26 @@
   "email": "put@email.com",
   "username": "about2bdeleted"
 }
+
+
+#POST dealership body
+
+{
+  "name": "update ME PLEASE",
+  "address": "I was just created",
+  "state": "AL",
+  "zip": "54321"
+ 
+}
+
+
+#PUT dealership body
+
+{
+  "name": "DELETE ME PLEASE",
+  "address": "I was just updated",
+  "state": "AL",
+  "zip": "54321"
+ 
+}
+
