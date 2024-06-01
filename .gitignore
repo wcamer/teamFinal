@@ -1,2 +1,4 @@
 node_modules
 .env
+practice_test_spec.js
+filterByTerm.js
