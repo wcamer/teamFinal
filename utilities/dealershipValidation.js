@@ -78,8 +78,8 @@ val.postDealershipRules = () => {
   
       body("zip")
         .trim()
-        .isLength({ min: 5 })
-        .matches(/^\d$/)
+        .isInt()
+        .isLength({ min: 5, max: 5 })
         .withMessage(
           "Please enter a valid zip code with at least 5 digits"
         )
@@ -130,8 +130,8 @@ val.putDealershipRules = () => {
   
       body("zip")
         .trim()
+        .isInt()
         .isLength({ min: 5 })
-        .matches(/^\d$/)
         .withMessage(
           "Please enter a valid zip code with at least 5 digits"
         )
